@@ -8,5 +8,4 @@ class TestUntitled < Test::Unit::TestCase
     GildedRose.new(items).update_quality()
     assert_equal items[0].name, "fixme"
   end
-
 end

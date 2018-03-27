@@ -5,7 +5,9 @@ class GildedRose
   end
 
   def update_quality()
+    puts "before "
     @items.each do |item|
+      p item
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
           if item.name != "Sulfuras, Hand of Ragnaros"
@@ -49,6 +51,10 @@ class GildedRose
           end
         end
       end
+    end
+    puts "after "
+    @items.each do |item|
+      puts item
     end
   end
 end
