@@ -1,10 +1,6 @@
 require File.join(File.dirname(__FILE__), 'gilded_rose')
 
 describe GildedRose do
-  let(:sulfuras) { double("item", :name => "Sulfuras, Hand of Ragnaros", :sell_in => 30, :quality => 50) }
-  before(:each) do
-
-  end
 
   describe "#update_quality" do
     it "does not change the name" do
@@ -15,9 +11,9 @@ describe GildedRose do
 
     describe "Sulfuras" do
       it "never changes" do
-
-        GildedRose.new([sulfuras]).update_quality()
-        expect(sulfuras).to have_attributes(:sell_in => 30, :quality => 50)
+        item = Item.new("Sulfuras, Hand of Ragnaros", 30, 50)
+        GildedRose.new([item]).update_quality()
+        expect(item).to have_attributes(:sell_in => 30, :quality => 50)
       end
     end
 
@@ -81,15 +77,48 @@ describe GildedRose do
       end
     end
 
-    # describe "#sulfuras?" do
-    #   it "returns true if the item is Sulfuras" do
-    #     expect(GildedRose.new.sulfuras?(Item.new("Sulfuras, Hand of Ragnaros", 30, 50)).to eq(true))
-    #   end
-    #
-    #   it "returns false if the item is not Sulfuras" do
-    #     expect(GildedRose.new.sulfuras?(Item.new("foo", 30, 50)).to eq(false))
-    #   end
-    # end
+    describe "#sulfuras?" do
+      it "returns true if the item is Sulfuras" do
+        item = Item.new("Sulfuras, Hand of Ragnaros", 30, 50)
+        expect(GildedRose.new([item]).sulfuras?(item)).to eq(true)
+      end
+
+      it "returns false if the item is not Sulfuras" do
+        item = Item.new("foo", 30, 50)
+        expect(GildedRose.new([item]).sulfuras?(item)).to eq(false)
+      end
+    end
+
+    describe "#aged_brie?" do
+      it "returns true if the item is Aged Brie" do
+        item = Item.new("Aged Brie", 30, 50)
+        expect(GildedRose.new([item]).aged_brie?(item)).to eq(true)
+      end
+
+      it "returns false if the item is not Sulfurus" do
+        item = Item.new("foo", 30, 50)
+        expect(GildedRose.new([item]).aged_brie?(item)).to eq(false)
+      end
+    end
+
+    describe "#backstage?" do
+      it "returns true if the item is a backstage pass" do
+        item = Item.new("Backstage passes to a TAFKAL80ETC concert", 30, 50)
+        expect(GildedRose.new([item]).backstage?(item)).to eq(true)
+      end
+
+      it "returns false if the item is not Sulfurus" do
+        item = Item.new("foo", 30, 50)
+        expect(GildedRose.new([item]).backstage?(item)).to eq(false)
+      end
+    end
+
+    describe "#increase_quality" do
+      it "increases the quality of brie" do
+        item = Item.new("Aged Brie", 1, 0)
+        expect(GildedRose.new([item]).increase_quality(item)).to eq(1)
+      end
+    end
 
 
   end
@@ -111,7 +140,5 @@ describe GildedRose do
   #   end
   # end
   #
-
-  # TODO: makemore doubles then before each gild_rose = GR.new(items)
 
 end
