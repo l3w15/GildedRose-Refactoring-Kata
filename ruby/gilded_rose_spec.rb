@@ -1,6 +1,10 @@
 require File.join(File.dirname(__FILE__), 'gilded_rose')
 
 describe GildedRose do
+  let(:sulfuras) { double("item", :name => "Sulfuras, Hand of Ragnaros", :sell_in => 30, :quality => 50) }
+  before(:each) do
+
+  end
 
   describe "#update_quality" do
     it "does not change the name" do
@@ -11,9 +15,9 @@ describe GildedRose do
 
     describe "Sulfuras" do
       it "never changes" do
-        item = Item.new("Sulfuras, Hand of Ragnaros", 30, 50)
-        GildedRose.new([item]).update_quality()
-        expect(item).to have_attributes(:sell_in => 30, :quality => 50)
+
+        GildedRose.new([sulfuras]).update_quality()
+        expect(sulfuras).to have_attributes(:sell_in => 30, :quality => 50)
       end
     end
 
@@ -77,9 +81,19 @@ describe GildedRose do
       end
     end
 
+    # describe "#sulfuras?" do
+    #   it "returns true if the item is Sulfuras" do
+    #     expect(GildedRose.new.sulfuras?(Item.new("Sulfuras, Hand of Ragnaros", 30, 50)).to eq(true))
+    #   end
+    #
+    #   it "returns false if the item is not Sulfuras" do
+    #     expect(GildedRose.new.sulfuras?(Item.new("foo", 30, 50)).to eq(false))
+    #   end
+    # end
+
 
   end
-  # 
+  #
   # describe "check behaviour of all items" do
   #   it "doesn't delete items" do
   #     items = [
@@ -97,5 +111,7 @@ describe GildedRose do
   #   end
   # end
   #
+
+  # TODO: makemore doubles then before each gild_rose = GR.new(items)
 
 end

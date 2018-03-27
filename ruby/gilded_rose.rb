@@ -5,14 +5,14 @@ class GildedRose
   end
 
   def update_quality()
-    puts "before "
     @items.each do |item|
-      p item
+      return item = item if sulfurus?(item)
+      # return ageBrie(item) if aged_brie?(item)
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
-          if item.name != "Sulfuras, Hand of Ragnaros"
+
             item.quality = item.quality - 1
-          end
+
         end
       else
         if item.quality < 50
@@ -31,16 +31,16 @@ class GildedRose
           end
         end
       end
-      if item.name != "Sulfuras, Hand of Ragnaros"
+
         item.sell_in = item.sell_in - 1
-      end
+
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.quality > 0
-              if item.name != "Sulfuras, Hand of Ragnaros"
+
                 item.quality = item.quality - 1
-              end
+
             end
           else
             item.quality = item.quality - item.quality
@@ -57,6 +57,14 @@ class GildedRose
       puts item
     end
   end
+
+  def sulfurus?(item)
+    item.name == "Sulfuras, Hand of Ragnaros"
+  end
+
+  # def aged_brie?(item)
+  #   item.name == "Aged Brie"
+  # end
 end
 
 class Item
