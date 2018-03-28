@@ -1,5 +1,3 @@
-# require '../legendary_item'
-
 describe LegendaryItem do
   let(:sulfuras) { described_class.new("Sulfuras, Hand of Ragnaros", 0, 80) }
 
