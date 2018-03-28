@@ -1,9 +1,9 @@
 require './item'
 
-class BaseItem < Item
-  MAX_QUALITY = 50
-  MIN_QUALITY = 0
+MAX_QUALITY = 50
+MIN_QUALITY = 0
 
+class BaseItem < Item
   def age_item
     @sell_in -= 1
   end

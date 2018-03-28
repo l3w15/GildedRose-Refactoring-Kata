@@ -1,11 +1,12 @@
-class DeadlineItem < BaseItem
-  DOUBLE_QUALITY_DAYS = 10
-  TRIPLE_QUALITY_DAYS = 5
-  LAST_DAY = 0
+DOUBLE_QUALITY_DAYS = 10
+TRIPLE_QUALITY_DAYS = 5
+LAST_DAY = 0
 
+class DeadlineItem < BaseItem
   def update_item
-    age_item
     @sell_in > LAST_DAY ? quality_add_one : @quality = 0
+    age_item
+    self
   end
 
   def quality_add_one
