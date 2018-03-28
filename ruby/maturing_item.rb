@@ -1,3 +1,5 @@
+require './base_item'
+
 class MaturingItem < BaseItem
   def update_item
     age_item

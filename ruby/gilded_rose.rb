@@ -1,13 +1,15 @@
 require './legendary_item'
 require './maturing_item'
 require './deadline_item'
+require './conjured_item'
 
 class GildedRose
 
   ITEM_TYPE = {
-    "Aged Brie" => MaturingItem,
-    "Backstage passes to a TAFKAL80ETC concert" => DeadlineItem,
-    "Sulfuras, Hand of Ragnaros" => LegendaryItem
+    "aged" => MaturingItem,
+    "concert" => DeadlineItem,
+    "sulfuras" => LegendaryItem,
+    "conjured" => ConjuredItem
   }
 
   def initialize(items)
@@ -16,9 +18,12 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      item = ITEM_TYPE[item.name] ? ITEM_TYPE[item.name].new(item.name, item.sell_in, item.quality)
-        : BaseItem.new(item.name, item.sell_in, item.quality)
-      item.update_item
+      item = BaseItem.new(item.name, item.sell_in, item.quality)
+      ITEM_TYPE.each do |key, value|
+        item = value.new(item.name, item.sell_in, item.quality) if item.name.downcase.include? key
+      end
+      puts item::class
+      puts item.update_item
     end
   end
 

@@ -2,7 +2,7 @@ require_relative '../base_item'
 
 describe MaturingItem do
 
-  let(:aged_brie) { described_class.new("Aged Brie", 1, 0) }
+  let(:aged_brie) { described_class.new('Aged Brie', 1, 0) }
   let(:max_quality_aged_brie) { described_class.new("Aged Brie", 0, 50) }
 
   describe '#update_item' do
