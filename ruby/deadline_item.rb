@@ -1,5 +1,3 @@
-require './base_item'
-
 class DeadlineItem < BaseItem
   DOUBLE_QUALITY_DAYS = 10
   TRIPLE_QUALITY_DAYS = 5

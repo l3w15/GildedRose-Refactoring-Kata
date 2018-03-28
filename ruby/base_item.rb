@@ -11,5 +11,6 @@ class BaseItem < Item
   def update_item
     age_item
     @quality -= 1 if @quality > MIN_QUALITY
+    self
   end
 end

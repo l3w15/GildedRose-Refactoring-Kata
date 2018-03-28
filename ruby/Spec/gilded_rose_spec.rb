@@ -10,33 +10,6 @@ describe GildedRose do
       expect(items[0].name).to eq "foo"
     end
 
-    describe "a normal item" do
-      it "ages and decreases in quality" do
-        item = BaseItem.new("ham", 11, 50)
-        item.update_item
-        expect(item).to have_attributes(:sell_in => 10, :quality => 49)
-      end
-
-      it "never has quality of below zero" do
-        item = BaseItem.new("beef", 0, 0)
-        item.update_item
-        expect(item).to have_attributes(:sell_in => -1, :quality => 0)
-      end
-    end
-
-    describe "Aged Brie" do
-      it "increases in quality the older it gets" do
-        item = MaturingItem.new("Aged Brie", 1, 0)
-        item.update_item
-        expect(item).to have_attributes(:sell_in => 0, :quality => 1)
-      end
-
-      it "never has quality over 50" do
-        item = MaturingItem.new("Aged Brie", 0, 50)
-        item.update_item
-        expect(item).to have_attributes(:sell_in => -1, :quality => 50)
-      end
-    end
 
     describe "Backstage Pass" do
       it "increases in quality the older it gets" do
