@@ -15,12 +15,10 @@ class DeadlineItem < BaseItem
   end
 
   def quality_add_two
-    puts "quality add two"
     @sell_in > TRIPLE_QUALITY_DAYS && @quality < MAX_QUALITY ? @quality += 2 : quality_add_three
   end
 
   def quality_add_three
-    puts "quality add three"
     @quality += 3 if @sell_in > LAST_DAY && @quality < MAX_QUALITY
   end
 end

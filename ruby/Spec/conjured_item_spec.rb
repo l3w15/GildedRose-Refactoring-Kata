@@ -1,3 +1,4 @@
+require 'spec_helper'
 require_relative '../conjured_item'
 require_relative '../base_item'
 

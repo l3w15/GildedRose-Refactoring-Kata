@@ -12,19 +12,21 @@ class GildedRose
     "conjured" => ConjuredItem
   }
 
+  attr_reader :items
+
   def initialize(items)
     @items = items
   end
 
   def update_quality
-    @items.each do |item|
+    @items.map! do |item|
       item = BaseItem.new(item.name, item.sell_in, item.quality)
       ITEM_TYPE.each do |key, value|
         item = value.new(item.name, item.sell_in, item.quality) if item.name.downcase.include? key
       end
-      puts item::class
-      puts item.update_item
+      item.update_item
     end
+    self
   end
 
 end
