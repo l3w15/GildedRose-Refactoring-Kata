@@ -11,7 +11,7 @@ class GildedRose
     'conjured' => ConjuredItem
   }.freeze
 
-  attr_reader :updated_items
+  attr_reader :updated_items, :items
 
   def initialize(items)
     @items = items
@@ -21,12 +21,18 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      ITEM_TYPES.each do |key, value|
-        @item_type = value if item.name.downcase.include? key
-      end
+      check_item_type(item)
       item = @item_type.new(item.name, item.sell_in, item.quality)
       @updated_items.push(item.update_item)
     end
-    @updated_items
+    @items = @updated_items
+  end
+
+  private
+
+  def check_item_type(item)
+    ITEM_TYPES.each do |key, value|
+      @item_type = value if item.name.downcase.include? key
+    end
   end
 end

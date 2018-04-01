@@ -28,43 +28,43 @@ describe GildedRose do
 
   describe '#update_quality' do
     it "doesn't change the name" do
-      expect(gild_rose.updated_items[0].name).to eq('+1 Defence Boarhide jacket')
+      expect(gild_rose.items[0].name).to eq('+1 Defence Boarhide jacket')
     end
 
     it 'recognises a conjured item and reduces the quality by 2' do
-      expect(gild_rose.updated_items[1].quality).to eq MIN_QUALITY
+      expect(gild_rose.items[1].quality).to eq MIN_QUALITY
     end
 
     it 'increases the quality of maturing items by one' do
-      expect(gild_rose.updated_items[2].quality).to eq 1
+      expect(gild_rose.items[2].quality).to eq 1
     end
 
     it "doesn't change legendary items" do
-      expect(gild_rose.updated_items[3].quality).to eq 60
+      expect(gild_rose.items[3].quality).to eq 60
     end
 
     it "increases a deadline item's quality by one more than 10 days before" do
-      expect(gild_rose.updated_items[4].quality).to eq 21
+      expect(gild_rose.items[4].quality).to eq 21
     end
 
     it "increases a deadline item's quality by two 10 or fewer days before" do
-      expect(gild_rose.updated_items[5].quality).to eq 22
+      expect(gild_rose.items[5].quality).to eq 22
     end
 
     it "increases a deadline item's quality by three 5 or fewer days before" do
-      expect(gild_rose.updated_items[6].quality).to eq 23
+      expect(gild_rose.items[6].quality).to eq 23
     end
 
     it "reduces a deadline item's quality to zero after the deadline" do
-      expect(gild_rose.updated_items[7].quality).to eq MIN_QUALITY
+      expect(gild_rose.items[7].quality).to eq MIN_QUALITY
     end
 
     it "doesn't allow quality over max quality" do
-      expect(gild_rose.updated_items[8].quality).to eq MAX_QUALITY
+      expect(gild_rose.items[8].quality).to eq MAX_QUALITY
     end
 
     it "doesn't allow less than min quality" do
-      expect(gild_rose.updated_items[9].quality).to eq MIN_QUALITY
+      expect(gild_rose.items[9].quality).to eq MIN_QUALITY
     end
   end
 end

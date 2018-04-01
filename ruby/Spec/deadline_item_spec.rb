@@ -27,7 +27,7 @@ describe DeadlineItem do
     end
 
     it 'cannot have quality over max quality' do
-      expect(max_quality_deadline_item.update_item.quality).to eq 50
+      expect(max_qual_deadline_item.update_item.quality).to eq 50
     end
   end
 end
