@@ -8,7 +8,7 @@ describe ConjuredItem do
 
   describe '#update_item' do
     it 'ages the item and decreases the quality by two' do
-      expect(conjured_item.update_item).to have_attributes(:sell_in => 0, :quality => 0)
+      expect(conjured_item.update_item).to have_attributes(sell_in: 0, quality: 0)
     end
 
     it 'cannot have quality less than zero' do
