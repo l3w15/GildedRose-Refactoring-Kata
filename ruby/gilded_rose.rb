@@ -1,7 +1,7 @@
-require './legendary_item'
-require './maturing_item'
-require './deadline_item'
-require './conjured_item'
+require_relative 'legendary_item'
+require_relative 'maturing_item'
+require_relative 'deadline_item'
+require_relative 'conjured_item'
 
 class GildedRose
 

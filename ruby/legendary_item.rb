@@ -1,4 +1,4 @@
-require './item'
+require_relative 'item'
 
 class LegendaryItem < Item
     def update_item

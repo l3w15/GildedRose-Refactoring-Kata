@@ -1,4 +1,4 @@
-require './item'
+require_relative 'item'
 
 MAX_QUALITY = 50
 MIN_QUALITY = 0
